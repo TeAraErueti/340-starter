@@ -45,13 +45,16 @@ header {
   align-items: center;
 }
 
-.site-name {
+.siteName {
   font-family: var(--decorative-font);
   font-size: 2rem;
   font-weight: bold;
   color: var(--primary-fg);
 }
-
+.siteName a {
+  text-decoration: none;
+  color: inherit;
+}
 
 nav {
   display: flex;
@@ -64,17 +67,25 @@ nav {
 
 nav ul {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   list-style: none;
-  padding: 0.5rem;
+  padding: 0;
   margin: 0;
-  gap: 2rem; /* Increased gap between nav links */
+  gap: 2rem;
+}
+
+nav li {
+  display: flex;
+  align-items: center;
 }
 
 nav a {
   color: var(--secondary-fg);
   text-decoration: none;
   transition: transform 0.3s;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
 }
 
 nav a:hover {
