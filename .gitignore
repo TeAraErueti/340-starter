@@ -5,6 +5,8 @@
 
 # node_modules is a storage folder for Node and
 # can get very large.
+# It is not needed on the remote server and should
+# not be uploaded to github.
 node_modules
 
 # .env file is for local use only. It contains
