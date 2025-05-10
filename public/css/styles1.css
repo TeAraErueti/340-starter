@@ -1,6 +1,6 @@
 /* Root Color Scheme */
 :root {
-  --primary-fg: #0a1a44; /* dark blue */
+  --primary-fg: #163174; /* dark blue */
   --primary-bg: #f8f9fa; /* off white */
   --secondary-fg: #c0c0c0; /* silver grey */
   --secondary-bg: #0a1a44; /* dark blue */
@@ -86,7 +86,7 @@ nav a:hover {
 }
 
 .hero-text {
-  position: absolute;
+  position:absolute;
   background-color: rgba(255, 255, 255, 0.85);
   color: var(--primary-fg);
   padding: 1rem;
@@ -111,7 +111,7 @@ nav a:hover {
 }
 
 .button-blue:hover {
-  background-color: #1f2f66;
+  background-color: #1c98ad;
 }
 
 /* Reviews & Upgrades Container */
@@ -154,6 +154,22 @@ nav a:hover {
 
 /* Desktop View */
 @media screen and (min-width: 700px) {
+
+   .main-container {
+    border: 2px solid #0086bb;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 10px;
+   }
+
+   .hero-text{
+    position: static;
+    background-color: transparent;
+    color: var(--primary-fg);
+    padding: 0;
+    box-shadow: none;
+   }
+   
   .content {
     flex-direction: row;
     justify-content: space-between;
