@@ -167,33 +167,48 @@ body, p, li {
   z-index: 0;
 }
 
+
 .hero-text {
   position: absolute;
   top: 10%;
   left: 5%;
   z-index: 2;
   max-width: 300px;
-  background-color: rgba(255, 255, 255, 0.85);
-  color: var(--pop);
+  background-color: rgba(255, 255, 255, 0.75);
+  color: #0a1a44;
   padding: 1rem;
   border-radius: .5rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
+
 
 .hero-text h2 {
   margin: 0;
   font-size: 1.5rem;
 }
 
+
 .hero ul {
   list-style: none;
   padding: 0;
+  color: #193477;
+}
+.hero h3 {
+  color: #193477;
 }
 
-.hero-text input.button-blue {
-  display: inline-block;
-  width: 100%;
+
+.hero-text input
+.button-blue {
+  background-color: #0a1a44;
+  color: black;
+  border: 0;
+  border-radius: .3rem;
+  padding: .5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
 }
+
 
 .gallery {
   display: grid;
@@ -232,18 +247,17 @@ body, p, li {
   color: var(--secondary-fg);
 }
 
+
 .button-blue {
-  background-color: var(--pop);
-  color: white;
-  border: none;
-  border-radius: 0.4rem;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
+  background-color: #0a1a44;
+  color: black;
+  border: 0;
+  border-radius: .3rem;
+  padding: .5rem 1rem;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 1rem;
-  transition: background-color 0.3s, transform 0.2s;
 }
+
 
 .button-blue:hover,
 .button-blue:focus {
@@ -315,7 +329,15 @@ ul#inv-display > li div.namePrice {
 }
 
 
+
 @media screen and (min-width: 700px) {
+  body {
+    background-image: url('/images/site/small_check.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: auto;
+  }
+
   .content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -336,11 +358,20 @@ ul#inv-display > li div.namePrice {
 }
 
 @media screen and (max-width: 699px) {
-  .hero-text {
-    top: 5%;
-    left: 3%;
-    font-size: 0.8rem;
-  }
+  
+.hero-text {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  z-index: 2;
+  max-width: 300px;
+  background-color: rgba(255, 255, 255, 0.75);
+  color: #0a1a44;
+  padding: 1rem;
+  border-radius: .5rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
 
   nav ul {
     
@@ -348,7 +379,15 @@ ul#inv-display > li div.namePrice {
   }
 }
 
+
 @media screen and (min-width: 700px) {
+  body {
+    background-image: url('/images/site/small_check.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: auto;
+  }
+
   .hero {
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -361,14 +400,20 @@ ul#inv-display > li div.namePrice {
     border-radius: .5rem;
   }
 
-  .hero-text {
-    position: static;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: var(--primary-fg);
-    max-width: none;
-    padding: 1rem;
-    box-shadow: none;
-  }
+  
+.hero-text {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  z-index: 2;
+  max-width: 300px;
+  background-color: rgba(255, 255, 255, 0.75);
+  color: #0a1a44;
+  padding: 1rem;
+  border-radius: .5rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
 
   .gallery {
     grid-template-columns: repeat(4, 1fr);
