@@ -45,6 +45,14 @@ header {
   align-items: center;
 }
 
+.site-name {
+  font-family: var(--decorative-font);
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-fg);
+}
+
+
 nav {
   display: flex;
   justify-content: space-between; /* Increased space between links */
