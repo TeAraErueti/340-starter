@@ -137,32 +137,39 @@ nav a:hover {
 /* Upgrades Gallery */
 #upgrades .gallery {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns on both mobile and desktop */
-  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+  gap: 1.5rem;
 }
 
 .caption-image {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   background-color: #416fb4;
-  color: rgb(57, 57, 223);
+  color: var(--secondary-fg);
   border-radius: 0.5rem;
   overflow: hidden;
   text-align: center;
+  height: 100%;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .caption-image img {
   width: 100%;
   height: auto;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
 }
 
 .caption-image p {
-  background-color: white;
-  width: 80%;
-  margin: 0;
+  background-color: #ffffff;
+  width: 100%;
   padding: 0.5rem;
-  color: var(--secondary-fg);
+  margin: 0;
+  color: var(--primary-fg);
+  font-weight: bold;
 }
 
 /* Responsive Layout */
@@ -193,7 +200,16 @@ nav a:hover {
   }
 
   #upgrades .gallery {
-    grid-template-columns: repeat(2, 1fr); /* Keep two items per row on mobile */
+    grid-template-columns: repeat(2, 1fr); /* maintain 2 per row */
+    gap: 1rem;
+  }
+
+  .caption-image {
+    padding: 0.5rem;
+  }
+
+  .caption-image p {
+    font-size: 0.85rem;
   }
 }
 
