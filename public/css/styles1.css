@@ -29,7 +29,7 @@ body {
   border: 2px solid #0086bb; /* blue border */
   max-width: 1200px;
   margin: 2rem auto;
-  padding: 2rem; /* Increased padding */
+  padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
@@ -137,7 +137,7 @@ nav a:hover {
 /* Upgrades Gallery */
 #upgrades .gallery {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr); /* Two columns on both mobile and desktop */
   gap: 1rem;
 }
 
@@ -169,8 +169,8 @@ nav a:hover {
 @media screen and (max-width: 699px) {
   #wrapper {
     margin: 0;
-    padding: 0;
-    border-width: 8px;
+    padding: 1rem;
+    border-width: 4px; /* Thinner border */
     max-width: 100%; /* Take up whole width */
   }
 
@@ -179,14 +179,14 @@ nav a:hover {
   }
 
   .hero-text {
-    top: 5%;
+    top: 10%;
     left: 5%;
     right: 5%;
-    max-width: 90%;
+    max-width: 80%; /* Smaller width to fit over the left part of the car */
   }
 
   #upgrades .gallery {
-    grid-template-columns: 1fr; /* Maintain single column for upgrades */
+    grid-template-columns: repeat(2, 1fr); /* Keep two items per row on mobile */
   }
 }
 
@@ -202,7 +202,8 @@ nav a:hover {
   }
 
   #upgrades .gallery {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Keep two items per row */
   }
 }
+
 
