@@ -170,7 +170,7 @@ nav a:hover {
   #wrapper {
     margin: 0;
     padding: 1rem;
-    border-width: 4px; /* Thinner border */
+    border: none; /* Removed thick blue border */
     max-width: 100%; /* Take up whole width */
   }
 
@@ -181,8 +181,10 @@ nav a:hover {
   .hero-text {
     top: 10%;
     left: 5%;
-    right: 5%;
-    max-width: 80%; /* Smaller width to fit over the left part of the car */
+    right: auto;
+    padding:0.5rem;
+    font-size:0.6rem;
+    max-width: 50%; /* Smaller width to fit over the left part of the car */
   }
 
   #upgrades .gallery {
