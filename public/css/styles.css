@@ -1,14 +1,14 @@
+
 :root {
-  --primary-fg: rgb(115, 16, 16);
-  --primary-bg: rgb(234, 242, 247);
-  --secondary-fg: rgb(236, 229, 209);
-  --secondary-bg: rgb(41, 84, 18);
-  --pop: rgb(170, 7, 7);
+  --primary-fg: #0a1a44;
+  --primary-bg: #f8f9fa;
+  --secondary-fg: #d3d3d3;
+  --secondary-bg: #1b1b1b;
+  --pop: #d35400;
   --decorative-font: "Anta", sans-serif;
   --body-font: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/******* Change Box Model ***************/
 *,
 *:before,
 *:after {
@@ -26,8 +26,6 @@ body {
   background-repeat: repeat-y;
   margin: 0;
   font-family: var(--body-font);
-  border-radius: 0;
-  border-width: 0;
   transition: padding 1s;
 }
 
@@ -76,7 +74,7 @@ nav {
 nav ul {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  
   justify-content: space-around;
   list-style: none;
   padding: .5rem 2rem;
@@ -107,7 +105,6 @@ footer {
   overflow: hidden;
 }
 
-/* General use */
 a {
   color: unset;
   text-decoration: none;
@@ -122,6 +119,11 @@ input:read-only {
 
 h1, h2, h3, h4 {
   font-family: var(--decorative-font);
+}
+
+body, p, li {
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 #wrapper {
@@ -146,7 +148,6 @@ h1, h2, h3, h4 {
   padding: 0;
 }
 
-/* Hero Section */
 .hero {
   position: relative;
   display: grid;
@@ -189,7 +190,11 @@ h1, h2, h3, h4 {
   padding: 0;
 }
 
-/* Gallery */
+.hero-text input.button-blue {
+  display: inline-block;
+  width: 100%;
+}
+
 .gallery {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -198,7 +203,6 @@ h1, h2, h3, h4 {
   padding-right: .1rem;
 }
 
-/* Caption Image */
 .caption-image {
   width: 100%;
   display: flex;
@@ -228,16 +232,26 @@ h1, h2, h3, h4 {
   color: var(--secondary-fg);
 }
 
-/* Buttons */
 .button-blue {
   background-color: var(--pop);
   color: white;
-  border: 0;
-  border-radius: .3rem;
-  padding: .5rem;
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-/* Inventory Display */
+.button-blue:hover,
+.button-blue:focus {
+  background-color: rgb(139, 6, 6);
+  transform: scale(1.05);
+  outline: none;
+}
+
 ul#inv-display {
   list-style: none;
   display: flex;
@@ -281,9 +295,11 @@ ul#inv-display > li div.namePrice {
   text-shadow: 0 0 25px var(--secondary-bg), 0 0 3px black;
 }
 
-/* Reviews and Upgrades */
 #reviews ul,
 #upgrades ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   padding-left: 1.5rem;
   margin-top: 0;
 }
@@ -293,21 +309,78 @@ ul#inv-display > li div.namePrice {
   color: var(--pop);
 }
 
-/* Car Listing */
 .car-listing h2 {
   text-align: center;
   margin-top: 0;
 }
 
-/* Responsive */
+
+@media screen and (min-width: 700px) {
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  #reviews, #upgrades {
+    background-color: var(--primary-bg);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  nav ul {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
 @media screen and (max-width: 699px) {
   .hero-text {
     top: 5%;
     left: 3%;
     font-size: 0.8rem;
   }
+
   nav ul {
-    flex-direction: row;
+    
     align-items: center;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .hero img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: .5rem;
+  }
+
+  .hero-text {
+    position: static;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--primary-fg);
+    max-width: none;
+    padding: 1rem;
+    box-shadow: none;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 2rem;
+  }
+
+  .content {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  #reviews, #upgrades {
+    flex: 1;
   }
 }
