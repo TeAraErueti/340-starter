@@ -332,7 +332,7 @@ ul#inv-display > li div.namePrice {
 
 @media screen and (min-width: 700px) {
   body {
-    background-image: url('/images/site/small_check.jpg');
+    background-image: url('/public/images/site/small_check.jpg');
     background-repeat: repeat;
     background-attachment: fixed;
     background-size: auto;
@@ -382,7 +382,7 @@ ul#inv-display > li div.namePrice {
 
 @media screen and (min-width: 700px) {
   body {
-    background-image: url('/images/site/small_check.jpg');
+    background-image: url('/public/images/site/small_check.jpg');
     background-repeat: repeat;
     background-attachment: fixed;
     background-size: auto;
