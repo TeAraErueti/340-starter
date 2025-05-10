@@ -27,7 +27,7 @@ body {
 #wrapper {
   background-color: var(--primary-bg); /* off white */
   border: 5px solid #56d6e7; /* blue border */
-  max-width: 1200px;
+  max-width: 1120px;
   margin: 3rem auto;
   padding: 2rem;
   border-radius: 10px;
@@ -159,7 +159,7 @@ nav a:hover {
 
 .caption-image p {
   background-color: white;
-  width: 100%;
+  width: 80%;
   margin: 0;
   padding: 0.5rem;
   color: var(--secondary-fg);
@@ -185,6 +185,11 @@ nav a:hover {
     padding:0.5rem;
     font-size:0.6rem;
     max-width: 50%; /* Smaller width to fit over the left part of the car */
+  }
+
+  .button-blue {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem; /* Smaller font size */
   }
 
   #upgrades .gallery {
