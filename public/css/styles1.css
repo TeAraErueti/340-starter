@@ -141,10 +141,6 @@ nav a:hover {
   padding: 1rem 0;
 }
 
-#reviews {
-  order: -1;
-}
-
 #reviews ul li {
   margin-bottom: 1rem;
 }
@@ -237,9 +233,16 @@ nav a:hover {
   #reviews,
   #upgrades {
     width: 48%;
-    order:unset;
   }
 
+  #upgrades {
+    order: 1; /* Displayed first on left */
+  }
+
+  #reviews {
+    order: 2; /* Displayed second on right */
+  }
+  
   #upgrades .gallery {
     grid-template-columns: repeat(2, 1fr); /* Keep two items per row */
   }
