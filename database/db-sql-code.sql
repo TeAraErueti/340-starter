@@ -6,7 +6,7 @@ CREATE TYPE public.account_type AS ENUM
     ('Client', 'Employee', 'Admin');
 
 ALTER TYPE public.account_type
-    OWNER TO cse340te;
+    OWNER TO cse340dbase;
 
 -- Table structure for table 'classification'
 CREATE TABLE public.classification (
@@ -241,3 +241,18 @@ VALUES   (
     'White',
     5
   );
+
+
+-- Task 4: Replace "small interiors" with "a huge interior" in GM Hummer record
+
+UPDATE inventory
+SET inv_description = REPLACE(inv_description, 'small interiors', 'a huge interior')
+WHERE inv_make = 'GM' AND inv_model = 'Hummer';
+
+
+-- Task 6: Update inv_image and inv_thumbnail to add "/vehicles" in the path
+
+UPDATE inventory
+SET 
+  inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
+  inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/');
