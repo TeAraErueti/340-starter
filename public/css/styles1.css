@@ -258,6 +258,113 @@ nav a:hover {
   color: #2a7f62;
 }
 
+/* Error Display with Vehicle Theme Colors */
+.error-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 4rem auto;
+  text-align: center;
+  background: linear-gradient(to bottom, var(--primary-bg), #e0e4ec);
+  border: 2px solid var(--pop);
+  border-radius: 12px;
+  color: var(--secondary-bg);
+  box-shadow: 0 4px 20px rgba(22, 49, 116, 0.2);
+  font-family: var(--body-font);
+  animation: slideIn 0.8s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.error-display:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 24px rgba(211, 84, 0, 0.4); /* pop color shadow */
+}
+
+.error-display h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-fg);
+  text-shadow: 1px 1px 2px var(--secondary-fg);
+  font-family: var(--decorative-font);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.error-display p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  color: var(--secondary-bg);
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.error-display img {
+  width: 60%;
+  max-width: 350px;
+  height: auto;
+  animation: floatIn 1.5s ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+.error-display img:hover {
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .error-display {
+    padding: 1.5rem;
+    margin: 2rem 1rem;
+  }
+
+  .error-display h1 {
+    font-size: 2rem;
+  }
+
+  .error-display p {
+    font-size: 1rem;
+  }
+
+  .error-display img {
+    width: 80%;
+  }
+}
+
+
 /* Responsive Layout */
 @media screen and (max-width: 699px) {
   #wrapper {
