@@ -183,6 +183,81 @@ nav a:hover {
   font-weight: bold;
 }
 
+/*week 3 update css for inventory layout*/
+/* Inventory grid container */
+#inv-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  justify-items: center; /* Center cards if not filling row */
+}
+
+/* Each vehicle card */
+#inv-display li {
+  width: 100%;
+  max-width: 300px; /* Prevent wide cards on few items */
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  height: 420px; /* Fixed consistent height */
+}
+
+/* Hover effect */
+#inv-display li:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Vehicle image */
+#inv-display img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Vehicle name and price container */
+.namePrice {
+  flex: 1;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Vehicle title */
+.namePrice h2 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+/* Vehicle price */
+.namePrice span {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #2a7f62;
+  margin-top: 0.5rem;
+}
+
+/* Title link styling */
+.namePrice h2 a {
+  color: #222;
+  text-decoration: none;
+}
+
+.namePrice h2 a:hover {
+  color: #2a7f62;
+}
+
 /* Responsive Layout */
 @media screen and (max-width: 699px) {
   #wrapper {
@@ -222,6 +297,26 @@ nav a:hover {
   .caption-image p {
     font-size: 0.85rem;
   }
+
+  nav ul {
+  flex-wrap: nowrap;           /* Prevent wrapping */
+  overflow-x: auto;            /* Allow horizontal scrolling */
+  white-space: nowrap;         /* Keep items in one line */
+  gap: 1rem;                   /* Slightly smaller gap on mobile */
+  padding: 0.5rem 0;
+}
+
+nav ul::-webkit-scrollbar {
+  display: none;               /* Hide scrollbar on WebKit browsers */
+}
+
+nav {
+  overflow-x: auto;            /* Allow scrolling */
+}
+
+nav a {
+  font-size: 0.9rem;        /* Smaller font size */
+}
 }
 
 @media screen and (min-width: 700px) {
