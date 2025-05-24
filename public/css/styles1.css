@@ -440,11 +440,11 @@ nav a:hover {
   }
 
   nav ul {
-  flex-wrap: nowrap;           /* Prevent wrapping */
-  overflow-x: auto;            /* Allow horizontal scrolling */
-  white-space: nowrap;         /* Keep items in one line */
-  gap: 1rem;                   /* Slightly smaller gap on mobile */
-  padding: 0.5rem 0;
+    flex-wrap: wrap;       /* Allow wrapping */
+    overflow-x: visible;   /* Remove horizontal scroll */
+    white-space: normal;   /* Allow wrapping */
+    gap: 0.75rem;
+    padding: 0.5rem 0;
 }
 
 nav ul::-webkit-scrollbar {
@@ -452,11 +452,11 @@ nav ul::-webkit-scrollbar {
 }
 
 nav {
-  overflow-x: auto;            /* Allow scrolling */
+  overflow-x: visible;            /* No horizontal scroll */
 }
 
 nav a {
-  font-size: 0.9rem;        /* Smaller font size */
+  font-size: 0.7rem;        /* Smaller font size */
 }
 }
 
