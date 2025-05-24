@@ -20,6 +20,9 @@ const baseController = require("./controllers/baseController")
 //Create the app instance
 const app = express()
 
+//Add error handler
+const errorHandler = require("./utilities/errorHandler");
+
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -58,6 +61,9 @@ app.use(async (err, req, res, next) => {
     nav
   })
 })
+
+// Use the external error handler
+app.use(errorHandler);
 
 /* ***********************
  * Local Server Information

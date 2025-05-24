@@ -183,6 +183,40 @@ nav a:hover {
   font-weight: bold;
 }
 
+/*week 3 inventory detail view*/
+.vehicle-detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1rem;
+  align-items: flex-start;
+}
+
+.vehicle-detail-container img {
+  max-width: 100%;
+  height: auto;
+  flex: 1 1 300px;
+  border-radius: 8px;
+}
+
+.vehicle-info {
+  flex: 1 1 300px;
+}
+
+.vehicle-info p:nth-of-type(1),
+.vehicle-info p:nth-of-type(3) {
+  box-shadow: 0 2px 5px rgba(0, 0, 255, 0.3); /* transparent blue shadow */
+  background-color: rgba(0, 0, 255, 0.05);     /* optional light blue background */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .vehicle-detail-container {
+    flex-direction: column;
+  }
+}
+
 /*week 3 update css for inventory layout*/
 /* Inventory grid container */
 #inv-display {
