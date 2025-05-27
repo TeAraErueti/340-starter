@@ -2,7 +2,7 @@ const utilities = require("./index") // ✅ Correct path
 const accountModel = require("../models/account-model")
 const { body, validationResult } = require("express-validator")
 const validate = {}
-s
+
 // Login validation rules
 validate.loginRules = () => {
   return [
