@@ -24,6 +24,9 @@ const session = require("express-session")
 //Add database connection
 const pool = require('./database/')
 
+//Add body parser
+const bodyParser = require("body-parser")
+
 //Create the app instance
 const app = express()
 
@@ -43,6 +46,10 @@ const errorHandler = require("./utilities/errorHandler");
   saveUninitialized: true,
   name: 'sessionId',
 }))
+
+// Body Parser Middleware
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 // Express Messages Middleware
 app.use(require('connect-flash')())

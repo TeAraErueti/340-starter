@@ -299,6 +299,36 @@ nav a:hover {
   text-decoration: underline;
 }
 
+/* Invalid input styling */
+input:required:invalid,
+input:focus:invalid {
+  background-image: url("/images/site/invalid.png"); /* ❌ Red X icon <a href="https://www.flaticon.com/free-icons/red" title="red icons">Red icons created by customicondesign_1 - Flaticon</a>*/
+  background-position: right 0.5rem top 0.5rem;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  border-color: #cc0000;
+  outline-color: #cc0000;
+}
+
+.notice {
+  color: rgb(247, 11, 11);
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+
+/* Valid input styling */
+input:required:valid {
+  background-image: url("/images/site/valid.png"); /* ✅ Checkmark icon <a href="https://www.flaticon.com/free-icons/correct" title="correct icons">Correct icons created by Pixel perfect - Flaticon</a>*/
+  background-position: right 0.5rem top 0.5rem;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  border-color: #009900;
+  outline-color: #009900;
+}
+
+
 /* === Desktop view (768px and up) === */
 @media screen and (min-width: 768px) {
   .login-container {
