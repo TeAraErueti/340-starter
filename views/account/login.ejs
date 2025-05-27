@@ -3,12 +3,30 @@
 <!-- Flash message -->
 <%- typeof messages !== 'undefined' ? messages() : '' %>
 
+<!-- Validation Errors -->
+<% if (errors && errors.length > 0) { %>
+  <ul class="notice">
+    <% errors.forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+
 <div class="login-container">
   <form action="/account/login" method="post" class="form-card">
     
     <!-- Email -->
     <label for="account_email">Email Address</label>
-    <input type="email" id="account_email" name="account_email" required>
+      <input 
+        type="email" 
+        name="account_email" 
+        id="account_email" 
+        required 
+        placeholder="Enter your email" 
+        value="<%= typeof account_email !== 'undefined' ? account_email : '' %>"
+
+      >
 
     <!-- Password -->
     <label for="account_password">Password</label>
