@@ -12,10 +12,16 @@ const classificationRules = () => {
   ];
 };
 
-const checkClassificationData = (req, res, next) => {
+const checkClassificationData = async (req, res, next) => {
   const errors = validationResult(req);
+
   if (!errors.isEmpty()) {
-    const nav = res.locals.nav;
+    let nav = res.locals.nav;
+    if (!nav) {
+      const util = require("../utilities");
+      nav = await util.getNav();
+    }
+
     res.render("inventory/add-classification", {
       title: "Add New Classification",
       nav,
@@ -24,8 +30,11 @@ const checkClassificationData = (req, res, next) => {
     });
     return;
   }
+
   next();
 };
+
+
 
 const inventoryRules = () => {
   return [
