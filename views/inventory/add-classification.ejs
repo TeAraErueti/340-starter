@@ -1,22 +1,46 @@
 <main>
-  <h1>Add New Classification</h1>
 
-  <% if (message && message.length > 0) { %>
-    <div class="flash"><%= message %></div>
-  <% } %>
-
-  <form action="/inv/add-classification" method="post">
-    <label for="classification_name">Classification Name (no spaces or special characters):</label>
-    <input type="text" id="classification_name" name="classification_name" pattern="^[a-zA-Z0-9]+$" required>
+    <h1>Add New Classification</h1>
     
-    <button type="submit">Add Classification</button>
-  </form>
+     <% if (errors && errors.length > 0) { %>
+      <ul class="errors" role="alert">
+        <% errors.forEach(error => { %>
+          <li><%= error.msg %></li>
+        <% }) %>
+      </ul>
+    <% } %>
 
-  <% if (errors && errors.length > 0) { %>
-    <ul class="errors">
-      <% errors.forEach(error => { %>
-        <li><%= error.msg %></li>
-      <% }) %>
-    </ul>
-  <% } %>
+  <div class="management-container">   
+
+    <% if (message && message.length > 0) { %>
+      <div class="flash" role="alert"><%= message %></div>
+    <% } %>    
+
+    <!-- FIELD IS REQUIRED message -->
+        <small class="field-hint">FIELD IS REQUIRED</small>
+
+    <form class="management-form" action="/inv/add-classification" method="post">
+    
+      <% const nameError = errors?.find(err => err.param === 'classification_name'); %>
+      
+      <% if (nameError) { %>
+        <p class="field-error"><%= nameError.msg %></p>
+      <% } %>       
+
+      <label for="classification_name">Classification Name</label>
+      <small class="input-hint">NAME MUST BE ALPHABETIC CHARACTERS ONLY.</small>
+      <input 
+        type="text" 
+        id="classification_name" 
+        name="classification_name" 
+        pattern="^[a-zA-Z]+$" 
+        required 
+        value="<%= typeof classification_name !== 'undefined' ? classification_name : '' %>">
+
+      <button type="submit">Add Classification</button>
+    </form>
+
+   
+  </div>
 </main>
+

@@ -6,8 +6,9 @@ const classificationRules = () => {
       .trim()
       .isLength({ min: 1 })
       .withMessage("Classification name is required.")
-      .matches(/^[a-zA-Z0-9]+$/)
-      .withMessage("No spaces or special characters allowed.")
+      .matches(/^[a-zA-Z]+$/)
+      .withMessage("Provide a correct classification name.")
+
   ];
 };
 
