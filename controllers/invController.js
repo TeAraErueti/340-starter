@@ -88,45 +88,25 @@ invCont.buildAddClassification = async function (req, res) {
 /* ***************************
  *  Handle add classification form
  * ************************** */
-invCont.addClassification = [
-  // Validation rules
-  body("classification_name")
-    .trim()
-    .notEmpty().withMessage("Field is required.")
-    .isAlpha().withMessage("Classification name must contain only letters."),
+invCont.addClassification = async function (req, res) {
+  const { classification_name } = req.body;
+  const nav = await utilities.getNav();
 
-  // Handler function
-  async (req, res) => {
-    const errors = validationResult(req);
-    const { classification_name } = req.body;
-    const nav = await utilities.getNav();
+  const result = await invModel.addClassification(classification_name);
 
-    if (!errors.isEmpty()) {
-      return res.status(400).render("inventory/add-classification", {
-        title: "Add New Classification",
-        nav,
-        errors: errors.array(),
-        message: null,
-        classification_name, // to retain input after error
-      });
-    }
-
-    const result = await invModel.addClassification(classification_name);
-
-    if (result) {
-      req.flash("message", "Classification added successfully.");
-      res.redirect("/inv");
-    } else {
-      req.flash("message", "Failed to add classification.");
-      res.status(500).render("inventory/add-classification", {
-        title: "Add New Classification",
-        nav,
-        errors: null,
-        message: req.flash("message"),
-      });
-    }
+  if (result) {
+    req.flash("message", "Classification added successfully.");
+    res.redirect("/inv");
+  } else {
+    req.flash("message", "Failed to add classification.");
+    res.status(500).render("inventory/add-classification", {
+      title: "Add New Classification",
+      nav,
+      errors: null,
+      message: req.flash("message"),
+    });
   }
-];
+};
 
 
 /* ***************************

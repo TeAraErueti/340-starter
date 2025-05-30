@@ -23,7 +23,7 @@ router.post(
   "/add-classification",
   invValidate.classificationRules(),
   invValidate.checkClassificationData,
-  invController.addClassification
+  utilities.handleErrors(invController.addClassification)
 )
 
 // ========================
