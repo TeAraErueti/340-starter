@@ -98,7 +98,7 @@ invCont.addClassification = async function (req, res) {
     req.flash("message", `The ${classification_name} classification was added successfully.`);
     res.redirect("/inv");
   } else {
-    req.flash("message", "Failed to add classification.");
+    req.flash("message", `Failed to add ${classification_name} classification.`);
     res.status(500).render("inventory/add-classification", {
       title: "Add New Classification",
       nav,
