@@ -1,32 +1,29 @@
 :root {
-  --primary-fg: #163174; /* dark blue */
-  --primary-bg: #f8f9fa; /* off white */
-  --secondary-fg: #c0c0c0; /* silver grey */
-  --secondary-bg: #0a1a44; /* dark blue */
-  --pop: #d35400; /* dark orange */
+  --primary-fg: #163174;
+  --primary-bg: #f8f9fa;
+  --secondary-fg: #c0c0c0;
+  --secondary-bg: #0a1a44;
+  --pop: #d35400;
   --decorative-font: "Anta", sans-serif;
   --body-font: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/******* Change Box Model ***************/
-*, *:before, *:after {
+/* Box model reset */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
 body {
-  background-image: url("/images/site/small_check.jpg");
-  background-repeat: repeat;
-  background-attachment: fixed;
-  background-position: top;
+  background: url("/images/site/small_check.jpg") top repeat fixed;
   background-size: auto;
   margin: 0;
   font-family: var(--body-font);
 }
 
-/* Wrapper for entire site */
+/* Main wrapper */
 #wrapper {
-  background-color: var(--primary-bg); /* off white */
-  border: 5px solid #56d6e7; /* blue border */
+  background-color: var(--primary-bg);
+  border: 5px solid #56d6e7;
   max-width: 1120px;
   margin: 3rem auto;
   padding: 2rem;
@@ -34,17 +31,19 @@ body {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Header, Nav, Footer */
+/* Header, Nav, Footer shared */
 header, footer, main {
   padding: 1rem 0;
 }
 
+/* Header layout */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* Site branding */
 .siteName {
   font-family: var(--decorative-font);
   font-size: 2rem;
@@ -56,13 +55,14 @@ header {
   color: inherit;
 }
 
+/* Navigation */
 nav {
   display: flex;
-  justify-content: space-between; /* Increased space between links */
+  justify-content: space-between;
   background-color: var(--secondary-bg);
   color: var(--secondary-fg);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-  padding: 0.5rem 1rem; /* Added padding for spacing */
+  padding: 0.5rem 1rem;
 }
 
 nav ul {
@@ -71,7 +71,7 @@ nav ul {
   list-style: none;
   padding: 0.5rem;
   margin: 0;
-  gap: 2rem; /* Increased gap between nav links */
+  gap: 2rem;
 }
 
 nav a {
@@ -79,12 +79,11 @@ nav a {
   text-decoration: none;
   transition: transform 0.3s;
 }
-
 nav a:hover {
   transform: scale(1.1);
 }
 
-/* Hero Section */
+/* Hero section */
 .hero {
   position: relative;
   display: flex;
@@ -117,7 +116,7 @@ nav a:hover {
   text-align: left;
 }
 
-/* Button */
+/* General button */
 .button-blue {
   background-color: #789BCE;
   color: black;
@@ -128,12 +127,11 @@ nav a:hover {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 .button-blue:hover {
   background-color: #58e23d;
 }
 
-/* Content Areas */
+/* Main content structure */
 .content {
   display: flex;
   flex-direction: column;
@@ -141,6 +139,7 @@ nav a:hover {
   padding: 1rem 0;
 }
 
+/* Reviews */
 #reviews ul li {
   margin-bottom: 1rem;
 }
