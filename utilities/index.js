@@ -86,11 +86,15 @@ Util.buildVehicleDetail = function (vehicle) {
 
 // Build classification <select> list
 Util.buildClassificationList = async function (classification_id = null) {
-  let data = await invModel.getClassifications()
+  let data = await invModel.getClassifications();
+   if (!Array.isArray(data)) {
+    console.error("Classification data is invalid:", data);
+    throw new Error("Unable to build classification list. No data found.");
+  }
   let classificationList =
-    '<select name="classification_id" id="classificationList" required>'
+    '<select name="classification_id" id="classification_id" required>'
   classificationList += "<option value=''>Choose a Classification</option>"
-  data.rows.forEach((row) => {
+  data.forEach((row) => {
     classificationList += '<option value="' + row.classification_id + '"'
     if (
       classification_id != null &&

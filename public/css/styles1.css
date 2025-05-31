@@ -557,6 +557,7 @@ input:required:valid {
   font-weight: bold;
   font-size: 1rem;
   font-family: var(--body-font);
+  color:  #a10000; /*update color for messages*/
 }
 
 .flash-message.success {
