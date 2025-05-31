@@ -516,7 +516,7 @@ input:required:valid {
   color: black;
   font-weight: bold;
   border: 1px solid black;
-  width:50%;
+  width:40%;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -585,6 +585,7 @@ input:required:valid {
 
   .management-form button {
     font-size: 0.95rem;
+    width:65%;
   }
 }
 
