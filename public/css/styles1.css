@@ -366,8 +366,8 @@ input:required:valid {
 
 .vehicle-info p:nth-of-type(1),
 .vehicle-info p:nth-of-type(3) {
-  box-shadow: 0 2px 5px rgba(0, 0, 255, 0.3); /* transparent blue shadow */
-  background-color: rgba(0, 0, 255, 0.05);     /* optional light blue background */
+  box-shadow: 0 2px 5px rgba(0, 0, 255, 0.3); 
+  background-color: rgba(0, 0, 255, 0.05);     
   padding: 10px;
   border-radius: 5px;
 }
@@ -533,7 +533,7 @@ input:required:valid {
 
 .field-hint {
   font-size: 0.9rem;
-  color: #f3eeee; /* or your desired alert/hint color */
+  color: #f3eeee; 
   font-weight: bold;
   margin-top: -0.5rem;
   margin-bottom: 0.25rem;
@@ -556,7 +556,7 @@ input:required:valid {
   font-weight: bold;
   font-size: 1rem;
   font-family: var(--body-font);
-  color:  #a10000; /*update color for messages*/
+  color:  #a10000; 
 }
 
 .flash-message.success {
@@ -610,7 +610,7 @@ input:required:valid {
 
 .error-display:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 24px rgba(211, 84, 0, 0.4); /* Dark orange shadow */
+  box-shadow: 0 6px 24px rgba(211, 84, 0, 0.4); 
 }
 
 .error-display h1 {
@@ -700,8 +700,8 @@ input:required:valid {
   #wrapper {
     margin: 0;
     padding: 1rem;
-    border: none; /* Removed thick blue border */
-    max-width: 100%; /* Take up whole width */
+    border: none; 
+    max-width: 100%; 
   }
 
   body {
@@ -714,12 +714,12 @@ input:required:valid {
     right: auto;
     padding:0.5rem;
     font-size:0.6rem;
-    max-width: 50%; /* Smaller width to fit over the left part of the car */
+    max-width: 50%; 
   }
 
   .button-blue {
     padding: 0.5rem 1rem;
-    font-size: 0.8rem; /* Smaller font size */
+    font-size: 0.8rem; 
   }
 
   #upgrades .gallery {
