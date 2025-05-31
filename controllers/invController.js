@@ -136,10 +136,10 @@ invCont.addInventory = async function (req, res) {
   const result = await invModel.addInventory(req.body);
 
   if (result) {
-    req.flash("message", "Inventory item added successfully.");
+    req.flash("message", `The '${make}' '${model}' was successfully added.`);
     res.redirect("/inv");
   } else {
-    req.flash("message", "Failed to add inventory item.");
+    req.flash("message", `Failed to add '${make}' '${model}' to inventory.`);
     res.status(500).render("inventory/add-inventory", {
       title: "Add New Vehicle",
       nav,

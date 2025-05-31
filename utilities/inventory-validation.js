@@ -63,13 +63,27 @@ const inventoryRules = () => {
 
     body("inv_image")
       .trim()
-      .isURL({ protocols: ['http','https'], require_protocol: false })
-      .withMessage("Enter a valid image path (URL)."),
+      .custom((value) => {
+        if (
+          value.startsWith("http") || 
+          value.startsWith("/images/vehicles/")
+        ) {
+          return true;
+        }
+        throw new Error("Enter a valid image path (URL or default path).");
+      }),
 
     body("inv_thumbnail")
       .trim()
-      .isURL({ protocols: ['http','https'], require_protocol: false })
-      .withMessage("Enter a valid thumbnail path (URL)."),
+      .custom((value) => {
+        if (
+          value.startsWith("http") || 
+          value.startsWith("/images/vehicles/")
+        ) {
+          return true;
+        }
+        throw new Error("Enter a valid thumbnail path (URL or default path).");
+      }),
 
     body("inv_price")
       .isFloat({ min: 0 })
@@ -82,7 +96,7 @@ const inventoryRules = () => {
     body("inv_color")
       .trim()
       .isLength({ min: 1 })
-      .withMessage("Color is required.")
+      .withMessage("The vehicle's color is required.")
   ];
 };
 

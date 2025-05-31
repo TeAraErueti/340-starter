@@ -780,4 +780,112 @@ nav a {
   }
 }
 
+/* Week 4 add-inventory form styling */
+
+.add-inventory-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.add-inventory-container h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.add-inventory-container form {
+  background-color: #96cefc;
+  border: 2px solid #2f047e;
+  margin-top:1rem;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-inventory-container form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.add-inventory-container form input[type="text"],
+.add-inventory-container form input[type="number"],
+.add-inventory-container form select,
+.add-inventory-container form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.add-inventory-container form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.add-inventory-container form button {
+  display: block;
+  width: 100%;
+  background-color: #e9ecec;
+  width:60%;
+  color:black;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight:bold;
+  border: rgb(29, 29, 29) 1px solid;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-inventory-container form button:hover {
+  background-color: #f5e93ce7;
+}
+
+.add-inventory-container .field-hint{
+  display: block;
+  color: #030000;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-top:.1rem;
+  margin-bottom: 2.5rem;
+}
+
+.add-inventory-container .errors {
+  margin-top: .5rem;
+  padding: 1rem;
+  color: #b71c1c;
+  list-style-type: disc;
+  padding-left: 2rem;
+}
+
+.add-inventory-container .flash {    
+  color: #d40a0a;                 
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.add-inventory-container .errors li {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .add-inventory-container form {
+    padding: 1rem;
+  }
+
+  .add-inventory-container form button {
+    font-size: 0.95rem;
+  }
+}
+
+
 
