@@ -1,0 +1,179 @@
+:root {
+  --primary-fg: #163174;
+  --primary-bg: #f8f9fa;
+  --secondary-fg: #c0c0c0;
+  --secondary-bg: #0a1a44;
+  --pop: #d35400;
+  --decorative-font: "Anta", sans-serif;
+  --body-font: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Box model reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: url("/images/site/small_check.jpg") top repeat fixed;
+  background-size: auto;
+  margin: 0;
+  font-family: var(--body-font);
+}
+
+/* Main wrapper */
+#wrapper {
+  background-color: var(--primary-bg);
+  border: 5px solid #56d6e7;
+  max-width: 1120px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Header, Nav, Footer shared */
+header, footer, main {
+  padding: 1rem 0;
+}
+
+/* Header layout */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Site branding */
+.siteName {
+  font-family: var(--decorative-font);
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-fg);
+}
+.siteName a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--secondary-bg);
+  color: var(--secondary-fg);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 1rem;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0.5rem;
+  margin: 0;
+  gap: 2rem;
+}
+
+nav a {
+  color: var(--secondary-fg);
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+nav a:hover {
+  transform: scale(1.1);
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.111);
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.hero-text {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  max-width: 300px;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #43b3c2;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+/* General button */
+.button-blue {
+  background-color: #789BCE;
+  color: black;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.button-blue:hover {
+  background-color: #58e23d;
+}
+
+/* Main content structure */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+/* Reviews */
+#reviews ul li {
+  margin-bottom: 1rem;
+}
+
+/* Upgrades gallery */
+#upgrades .gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.caption-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #416fb4;
+  color: var(--secondary-fg);
+  border-radius: 0.5rem;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.caption-image img {
+  width: 100%;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.caption-image p {
+  background-color: #fff;
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0;
+  color: var(--primary-fg);
+  font-weight: bold;
+}

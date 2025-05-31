@@ -490,7 +490,7 @@ input:required:valid {
 
 .management-form label {
   font-weight: bold;
-  color: solid black;
+  color: black;
 }
 
 .management-form input,
