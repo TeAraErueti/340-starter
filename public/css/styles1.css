@@ -906,6 +906,112 @@ nav a {
   background-color: #f9f9f9;
 }
 
+/* week 5 delete inventory form styling*/
+
+.delete-inventory-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: sans-serif;
+}
+
+.delete-inventory-container h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #1f1e1e;
+}
+
+.delete-inventory-container .warning {
+  text-align: center;
+  font-weight: bold;
+  color: #b71c1c;
+  margin-bottom: 1rem;
+}
+
+.delete-inventory-container form {
+  background-color: #ffffff;
+  border: 2px solid #464545;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.delete-inventory-container form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.delete-inventory-container form input[type="text"],
+.delete-inventory-container form input[type="number"] {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1.2rem;
+  border: 1.5px solid #4b4a4a;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fafafa;
+  box-sizing: border-box;
+}
+
+.delete-inventory-container .btn-danger {
+  display: block;
+  width: 60%;
+  margin: 1rem auto 0;
+  background-color:#1f080a;
+  color: white;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-inventory-container .btn-danger:hover {
+  background-color:  #e92135;
+  color:white;
+}
+
+.delete-inventory-container .flash {
+  color: #d40a0a;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.delete-inventory-container .btn-secondary {
+  display: inline-block; 
+  background-color: #f8f7f7;
+  padding: 0.7rem 1.2rem;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 1px solid #333;
+  font-weight: bold;
+  color: #000;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem; 
+}
+
+.delete-inventory-container .btn-secondary:hover {
+  background-color: #26ee47;
+}
+
+
+@media (max-width: 600px) {
+  .delete-inventory-container form {
+    padding: 1rem;
+  }
+
+  .delete-inventory-container .btn-danger {
+    width: 60%;
+  }
+}
+
 
 
 
