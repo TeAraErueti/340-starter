@@ -2,6 +2,7 @@
  * This server.js file is the primary file of the 
  * application. It is used to control the project.
  *******************************************/
+
 /* ***********************
  * Require Statements
  *************************/
@@ -10,6 +11,7 @@
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
+const cookieParser = require("cookie-parser")
 
 //Load utilties and routes
 const utilities = require('./utilities/')
@@ -57,6 +59,12 @@ app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
+
+// Cookie Parser Middleware
+app.use(cookieParser())
+
+// JWT Token Middleware
+app.use(utilities.checkJWTToken)
 
 /* ***********************
  * View Engine and Templates

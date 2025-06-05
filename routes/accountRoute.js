@@ -16,13 +16,22 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin))
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
 /* ****************************************
+*  Deliver account management view (after login)
+* *************************************** */
+router.get(
+  "/", 
+  utilities.checkLogin, // ✅ ADD THIS MIDDLEWARE
+  utilities.handleErrors(accountController.buildAccountManagement)
+)
+
+/* ****************************************
 *  Process login attempt
 * *************************************** */
 router.post(
   "/login",
   validate.loginRules(),
   validate.checkLoginData,
-  utilities.handleErrors(accountController.loginAccount) // ✅ Wrap it!
+  utilities.handleErrors(accountController.accountLogin)
 )
 
 /* ****************************************
@@ -36,5 +45,7 @@ router.post(
 )
 
 module.exports = router
+
+
 
 

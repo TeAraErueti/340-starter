@@ -14,6 +14,10 @@ router.get("/detail/:inv_id", invController.buildVehicleDetailView)
 // Route to inventory management view
 router.get("/", invController.buildManagement)
 
+// Route to get inventory by classification ID (used by client-side JS)
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
+
+
 // ========================
 // Add Classification Routes
 // ========================
@@ -36,6 +40,25 @@ router.post(
   invValidate.checkInventoryData,
   utilities.handleErrors(invController.addInventory)
 )
+
+// ========================
+// Edit Inventory Item Route
+// ========================
+router.get(
+  "/edit/:inv_id",
+  utilities.handleErrors(invController.editInventoryView)
+);
+
+// ========================
+// Update Inventory Item Route
+// ========================
+router.post(
+  "/update",
+  invValidate.inventoryRules(),
+  invValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
+);
+
 
 module.exports = router
 

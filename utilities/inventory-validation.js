@@ -120,9 +120,56 @@ const checkInventoryData = async (req, res, next) => {
   next();
 };
 
+// Middleware for checking updated inventory data (redirects to edit view if errors)
+const checkUpdateData = async (req, res, next) => {
+  const {
+    inv_id,
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+  } = req.body;
+
+  const errors = validationResult(req);
+  const nav = await require("../utilities").getNav();
+  const classificationSelect = await require("../utilities").buildClassificationList(classification_id);
+
+  if (!errors.isEmpty()) {
+    res.render("inventory/edit-inventory", {
+      title: "Edit " + inv_make + " " + inv_model,
+      nav,
+      classificationSelect,
+      errors: errors.array(),
+      message: null,
+      inv_id,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_id
+    });
+    return;
+  }
+
+  next();
+};
+
+
 module.exports = {
   classificationRules,
   checkClassificationData,
   inventoryRules,
-  checkInventoryData
+  checkInventoryData,
+  checkUpdateData
 };
