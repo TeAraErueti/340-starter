@@ -7,11 +7,24 @@
  * Require Statements
  *************************/
 
+
 //Load dependencies
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
 const cookieParser = require("cookie-parser")
+
+//Add the session
+const session = require("express-session")
+
+//Add body parser
+const bodyParser = require("body-parser")
+
+//Create the app instance
+const app = express()
+
+//handle JWT
+const handleJWT = require("./utilities/handleJWT")
 
 //Load utilties and routes
 const utilities = require('./utilities/')
@@ -20,17 +33,8 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const accountRoute = require("./routes/accountRoute")
 const baseController = require("./controllers/baseController")
 
-//Add the session
-const session = require("express-session")
-
 //Add database connection
 const pool = require('./database/')
-
-//Add body parser
-const bodyParser = require("body-parser")
-
-//Create the app instance
-const app = express()
 
 //Add error handler
 const errorHandler = require("./utilities/errorHandler");
@@ -49,9 +53,16 @@ const errorHandler = require("./utilities/errorHandler");
   name: 'sessionId',
 }))
 
+// Make login state available to all views
+app.use((req, res, next) => {
+  res.locals.loggedin = req.session.loggedin || false
+  res.locals.accountData = req.session.accountData || null
+  next()
+})
+
 // Body Parser Middleware
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true })) 
 
 // Express Messages Middleware
 app.use(require('connect-flash')())
@@ -60,18 +71,21 @@ app.use(function(req, res, next){
   next()
 })
 
-// Cookie Parser Middleware
+//cookie parser middleware
 app.use(cookieParser())
 
+// Handle JWT Middleware
+app.use(handleJWT)
+
 // JWT Token Middleware
-app.use(utilities.checkJWTToken)
+//app.use(utilities.checkJWTToken)
 
 /* ***********************
  * View Engine and Templates
  *************************/
 app.set("view engine", "ejs")
 app.use(expressLayouts)
-app.set("layout", "./layouts/layout") // not at views root
+app.set("layout", "./layouts/layout") 
 
 
 /* ***********************

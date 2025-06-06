@@ -20,9 +20,19 @@ router.get("/register", utilities.handleErrors(accountController.buildRegister))
 * *************************************** */
 router.get(
   "/", 
-  utilities.checkLogin, // ✅ ADD THIS MIDDLEWARE
+  utilities.checkLogin, 
   utilities.handleErrors(accountController.buildAccountManagement)
 )
+
+/* ****************************************
+* Build update account view
+* *************************************** */
+router.get(
+  "/update/:account_id",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildUpdateAccount)
+)
+
 
 /* ****************************************
 *  Process login attempt
@@ -43,6 +53,29 @@ router.post(
   validate.checkRegData,
   utilities.handleErrors(accountController.registerAccount)
 )
+
+// Handle account info update
+router.post(
+  "/update",
+  validate.updateAccountRules(),
+  validate.checkUpdateData,
+  utilities.handleErrors(accountController.updateAccount)
+)
+
+// Handle password update
+router.post(
+  "/update-password",
+  validate.passwordRules(), 
+  validate.checkPasswordData,
+  utilities.handleErrors(accountController.updatePassword)
+)
+
+// Logout route
+router.get("/logout", (req, res) => {
+  res.clearCookie("jwt")
+  req.flash("message", "You have been logged out.")
+  res.redirect("/")
+})
 
 module.exports = router
 

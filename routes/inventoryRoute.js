@@ -5,75 +5,63 @@ const invController = require("../controllers/invController")
 const utilities = require("../utilities")
 const invValidate = require("../utilities/inventory-validation")
 
-// Route to build inventory by classification view
+// ========================
+// Public Routes (NO login required)
+// ========================
+
+// View inventory by classification
 router.get("/type/:classificationId", invController.buildByClassificationId)
 
-// Route to view vehicle detail
+// View vehicle detail
 router.get("/detail/:inv_id", invController.buildVehicleDetailView)
 
-// Route to inventory management view
-router.get("/", invController.buildManagement)
-
-// Route to get inventory by classification ID (used by client-side JS)
+// Get inventory JSON (used by AJAX)
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
 
 
 // ========================
-// Add Classification Routes
+// Protected Routes (Login + Admin/Employee ONLY)
 // ========================
-router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification))
 
+// Inventory management view
+router.get("/", utilities.checkAccountType, utilities.handleErrors(invController.buildManagement))
+
+// Add Classification
+router.get("/add-classification", utilities.checkAccountType, utilities.handleErrors(invController.buildAddClassification))
 router.post(
   "/add-classification",
+  utilities.checkAccountType,
   invValidate.classificationRules(),
   invValidate.checkClassificationData,
   utilities.handleErrors(invController.addClassification)
 )
 
-// ========================
-// Add Inventory Routes
-// ========================
-router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventory));
+// Add Inventory
+router.get("/add-inventory", utilities.checkAccountType, utilities.handleErrors(invController.buildAddInventory))
 router.post(
   "/add-inventory",
+  utilities.checkAccountType,
   invValidate.inventoryRules(),
   invValidate.checkInventoryData,
   utilities.handleErrors(invController.addInventory)
 )
 
-// ========================
-// Edit Inventory Item Route
-// ========================
-router.get(
-  "/edit/:inv_id",
-  utilities.handleErrors(invController.editInventoryView)
-);
+// Edit Inventory
+router.get("/edit/:inv_id", utilities.checkAccountType, utilities.handleErrors(invController.editInventoryView))
 
-// ========================
-// Update Inventory Item Route
-// ========================
+// Update Inventory
 router.post(
   "/update",
+  utilities.checkAccountType,
   invValidate.inventoryRules(),
   invValidate.checkUpdateData,
   utilities.handleErrors(invController.updateInventory)
-);
+)
 
-// ========================
-// Delete Inventory Item Routes
-// ========================
-
-// Deliver delete confirmation view
-router.get(
-  "/delete/:inv_id",
-  utilities.handleErrors(invController.buildDeleteInventoryView)
-);
-
-// Process delete inventory item
-router.post(
-  "/delete",
-  utilities.handleErrors(invController.deleteInventory)
-);
+// Delete Inventory
+router.get("/delete/:inv_id", utilities.checkAccountType, utilities.handleErrors(invController.buildDeleteInventoryView))
+router.post("/delete", utilities.checkAccountType, utilities.handleErrors(invController.deleteInventory))
 
 module.exports = router
+
 
