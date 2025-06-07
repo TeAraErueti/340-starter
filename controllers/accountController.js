@@ -102,7 +102,18 @@ async function accountLogin(req, res) {
   try {
     if (await bcrypt.compare(account_password, accountData.account_password)) {
       delete accountData.account_password
-      const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
+      const accessToken = jwt.sign(
+        {
+          account_id: accountData.account_id,
+          account_firstname: accountData.account_firstname,
+          account_lastname: accountData.account_lastname,
+          account_email: accountData.account_email,
+          account_type: accountData.account_type, // ✅ THIS LINE IS CRITICAL
+        },
+          process.env.ACCESS_TOKEN_SECRET,
+          { expiresIn: 3600 * 1000 }
+      )
+
       if(process.env.NODE_ENV === 'development') {
         res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
       } else {
@@ -210,9 +221,18 @@ async function updateAccount(req, res) {
     const updatedAccountData = updateResult.rows[0]
     delete updatedAccountData.account_password
 
-    const accessToken = jwt.sign(updatedAccountData, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: 3600 * 1000
-    })
+    const accessToken = jwt.sign(
+      {
+        account_id: updatedAccountData.account_id,
+        account_firstname: updatedAccountData.account_firstname,
+        account_lastname: updatedAccountData.account_lastname,
+        account_email: updatedAccountData.account_email,
+        account_type: updatedAccountData.account_type,
+      },
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: 3600 * 1000 }
+    )
+
 
     if (process.env.NODE_ENV === 'development') {
       res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
