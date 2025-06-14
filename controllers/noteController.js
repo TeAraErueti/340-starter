@@ -1,9 +1,10 @@
 const noteModel = require("../models/note-model");
+const vehicleModel = require("../models/inventory-model");
 const utilities = require("../utilities/");
 const { validationResult } = require("express-validator");
 
 /* ================================
- * 1. Build Notes View (if separate)
+ * 1. Build Notes View
  * ================================ */
 async function buildNotesView(req, res, next) {
   try {
@@ -34,11 +35,21 @@ async function addNote(req, res, next) {
   const notes = await noteModel.getNotesByVehicle(inv_id);
 
   if (!errors.isEmpty()) {
-    // Validation failed — render the page with errors & data
+    // Get full vehicle info for the detail view
+    const vehicle = await vehicleModel.getVehicleById(inv_id);
+
+    if (!vehicle) {
+      return res.status(404).render("errors/error", {
+        title: "Vehicle Not Found",
+        message: "The requested vehicle could not be found.",
+        nav,
+      });
+    }
+
     return res.status(400).render("inventory/detail", {
-      title: "Vehicle Details",
+      title: `${vehicle.inv_make} ${vehicle.inv_model}`,
       nav,
-      vehicleHTML: await utilities.buildVehicleHTML(inv_id),
+      vehicleHTML: utilities.buildVehicleDetail(vehicle),
       loggedin: !!res.locals.accountData,
       notes: notes.rows,
       accountData: res.locals.accountData,

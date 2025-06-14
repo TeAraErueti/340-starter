@@ -51,6 +51,7 @@ invCont.buildVehicleDetailView = async function (req, res, next) {
       title: `${vehicleData.inv_make} ${vehicleData.inv_model}`,
       nav,
       vehicleHTML,
+      vehicle: vehicleData,
       inv_id, 
       notes: notesData.rows, 
       loggedin: res.locals.loggedin || false ,

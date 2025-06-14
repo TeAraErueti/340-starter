@@ -43,12 +43,17 @@ async function getVehicleById(inv_id) {
       "SELECT * FROM public.inventory WHERE inv_id = $1",
       [inv_id]
     );
-    return result.rows[0];
+    if (result.rows.length === 0) {
+      return null; // no vehicle found
+    }
+    return result.rows[0]; // just return the single vehicle object
   } catch (error) {
     console.error("getVehicleById error:", error);
     throw new Error("Database error while retrieving vehicle");
   }
 }
+
+
 
 /* ***************************
  * Add new classification to database

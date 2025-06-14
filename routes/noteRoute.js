@@ -1,22 +1,27 @@
-const express = require("express")
-const router = express.Router()
-const noteController = require("../controllers/noteController")
-const utilities = require("../utilities/")
-const checkLogin = require("../utilities/checkLogin")
-const { body } = require("express-validator")
+const express = require("express");
+const router = express.Router();
+const noteController = require("../controllers/noteController");
+const utilities = require("../utilities/");
+const checkLogin = require("../utilities/checkLogin");
+const { body } = require("express-validator");
 
+// Build notes view for a vehicle
+router.get("/:inv_id", checkLogin, noteController.buildNotesView);
 
-router.get("/:inv_id", utilities.checkLogin, noteController.buildNotesView)
+// Add a note with validation on note_content
 router.post(
   "/:inv_id/add",
-  utilities.checkLogin,
+  checkLogin,
   body("note_content")
     .trim()
-    .isLength({ min: 1 }).withMessage("Note content cannot be empty.")
-    .isLength({ max: 500 }).withMessage("Note cannot exceed 500 characters."),
+    .notEmpty()
+    .withMessage("Note content cannot be empty.")
+    .isLength({ max: 500 })
+    .withMessage("Note cannot exceed 500 characters."),
   noteController.addNote
-)
+);
 
-router.post("/:inv_id/delete/:note_id", utilities.checkLogin, noteController.deleteNote)
+// Delete a note
+router.post("/:inv_id/delete/:note_id", checkLogin, noteController.deleteNote);
 
-module.exports = router
+module.exports = router;
