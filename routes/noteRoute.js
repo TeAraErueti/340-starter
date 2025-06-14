@@ -16,8 +16,7 @@ router.post(
     .isLength({ max: 500 }).withMessage("Note cannot exceed 500 characters."),
   noteController.addNote
 )
+
 router.post("/:inv_id/delete/:note_id", utilities.checkLogin, noteController.deleteNote)
-
-
 
 module.exports = router
