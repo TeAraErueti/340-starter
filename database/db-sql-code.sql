@@ -256,3 +256,15 @@ UPDATE inventory
 SET 
   inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
   inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/');
+
+
+-- Final enhancement: Add user notes/ comments for vehicles
+
+CREATE TABLE IF NOT EXISTS vehicle_notes (
+  note_id SERIAL PRIMARY KEY,
+  note_content TEXT NOT NULL,
+  account_id INT REFERENCES account(account_id),
+  inv_id INT REFERENCES inventory(inv_id),
+  note_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+

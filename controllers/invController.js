@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model");
+const noteModel = require("../models/note-model");
 const utilities = require("../utilities");
 const { body, validationResult } = require("express-validator");
 
@@ -34,6 +35,7 @@ invCont.buildVehicleDetailView = async function (req, res, next) {
   try {
     const inv_id = parseInt(req.params.inv_id);
     const vehicleData = await invModel.getVehicleById(inv_id);
+    const notesData = await noteModel.getNotesByVehicle(inv_id); 
 
     if (!vehicleData) {
       return res.status(404).render("errors/error", {
@@ -49,11 +51,16 @@ invCont.buildVehicleDetailView = async function (req, res, next) {
       title: `${vehicleData.inv_make} ${vehicleData.inv_model}`,
       nav,
       vehicleHTML,
+      inv_id, 
+      notes: notesData.rows, 
+      loggedin: res.locals.loggedin || false ,
+      message: req.flash("notice")
     });
   } catch (error) {
     next(error);
   }
 };
+
 
 /* ***************************
  *  Build inventory management view
