@@ -54,7 +54,8 @@ invCont.buildVehicleDetailView = async function (req, res, next) {
       inv_id, 
       notes: notesData.rows, 
       loggedin: res.locals.loggedin || false ,
-      message: req.flash("notice")
+      message: req.flash("notice"),
+      errors:[]
     });
   } catch (error) {
     next(error);

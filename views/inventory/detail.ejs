@@ -4,6 +4,17 @@
 
 <%- vehicleHTML %>
 
+<% if (errors && errors.length > 0) { %>
+  <div class="errors">
+    <ul>
+      <% errors.forEach(error => { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>
+
+
 <% if (loggedin) { %>
   <section id="notes-section">
     <h2>Vehicle Notes</h2>
@@ -36,9 +47,10 @@
     <% } %>
 
     <form id="add-note-form" action="/note/<%= inv_id %>/add" method="POST">
-      <label for="note_content">Add Note:</label>
-      <textarea name="note_content" id="note_content" required></textarea>
-      <button type="submit">Submit Note</button>
+        <label for="note_content">Add Note:</label>
+        <textarea name="note_content" id="note_content" required minlength="1" maxlength="500"></textarea>
+        <button type="submit">Submit Note</button>
     </form>
+
   </section>
 <% } %>

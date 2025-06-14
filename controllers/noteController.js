@@ -28,20 +28,32 @@ async function buildNotesView(req, res, next) {
  * 2. Add a Note
  * ================================ */
 async function addNote(req, res, next) {
+  const errors = validationResult(req)
+  const inv_id = parseInt(req.params.inv_id)
+  const nav = await utilities.getNav()
+
+  if (!errors.isEmpty()) {
+    const notes = await noteModel.getNotesByVehicle(inv_id)
+    return res.render("notes/notes", {
+      title: "Vehicle Notes",
+      nav,
+      inv_id,
+      notes: notes.rows,
+      errors: errors.array(),
+    })
+  }
+
   try {
     const { note_content } = req.body
-    const inv_id = parseInt(req.params.inv_id)
     const account_id = res.locals.accountData.account_id
 
     await noteModel.addNote(note_content, account_id, inv_id)
-
-    console.log("Note added:", { note_content, account_id, inv_id })
     req.flash("notice", "Note added successfully.")
     res.redirect(`/inv/detail/${inv_id}`)
   } catch (error) {
     console.error("Error adding note:", error)
     req.flash("notice", "There was an error adding the note.")
-    res.redirect(`/inv/detail/${req.params.inv_id}`)
+    res.redirect(`/inv/detail/${inv_id}`)
   }
 }
 
