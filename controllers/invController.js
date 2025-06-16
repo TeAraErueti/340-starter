@@ -146,13 +146,19 @@ invCont.addInventory = async function (req, res) {
   const nav = await utilities.getNav();
   const classificationSelect = await utilities.buildClassificationList(req.body.classification_id);
 
+  // Extract data from form
+  const {
+    inv_make,
+    inv_model
+  } = req.body;
+
   const result = await invModel.addInventory(req.body);
 
   if (result) {
-    req.flash("notice", `The '${make}' '${model}' was successfully added.`);
+    req.flash("notice", `The '${inv_make}' '${inv_model}' was successfully added.`);
     res.redirect("/inv");
   } else {
-    req.flash("notice", `Failed to add '${make}' '${model}' to inventory.`);
+    req.flash("notice", `Failed to add '${inv_make}' '${inv_model}' to inventory.`);
     res.status(500).render("inventory/add-inventory", {
       title: "Add New Vehicle",
       nav,
@@ -163,6 +169,7 @@ invCont.addInventory = async function (req, res) {
     });
   }
 };
+
 
 /* ***************************
  *  Return Inventory by Classification As JSON
